@@ -16,6 +16,12 @@ spec:
     spec:
       containers:
       - name: student
-        image: dmitrys04/k8s_lab:3.0
+        image: dmitrys04/k8s_lab
         ports:
         - containerPort: 5000
+        env:
+        - name: MONGODB_CONNSTRING
+          valueFrom: 
+            configMapKeyRef:
+              name: mongodb-configmap
+              key: database_url
